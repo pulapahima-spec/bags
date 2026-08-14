@@ -1,0 +1,3123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>LUXÉ | Luxury Bags</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Poppins,Arial,sans-serif;
+    background:#f7f5f0;
+    color:#222;
+    line-height:1.5;
+}
+
+h1,h2,h3,h4{
+    font-family:"Playfair Display",serif;
+}
+
+button,input,select,textarea{
+    font-family:inherit;
+}
+
+button{
+    cursor:pointer;
+}
+
+*:focus-visible{
+    outline:4px solid #1261ff !important;
+    outline-offset:3px;
+}
+
+/* NAVBAR */
+
+.navbar{
+    height:78px;
+    padding:0 6%;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    background:#f7f5f0;
+    border-bottom:1px solid #ddd;
+    position:sticky;
+    top:0;
+    z-index:1000;
+}
+
+.logo{
+    font-family:"Playfair Display",serif;
+    font-size:30px;
+    letter-spacing:6px;
+}
+
+.navbar nav{
+    display:flex;
+    gap:28px;
+}
+
+.navbar nav a{
+    color:#222;
+    text-decoration:none;
+    font-size:10px;
+    letter-spacing:2px;
+}
+
+.nav-actions{
+    display:flex;
+    align-items:center;
+    gap:8px;
+}
+
+.nav-actions button{
+    min-width:42px;
+    min-height:42px;
+    background:none;
+    border:0;
+    font-size:18px;
+    position:relative;
+}
+
+.accessibility-btn{
+    border:1px solid #bbb !important;
+    border-radius:50%;
+    background:white !important;
+}
+
+#cartCount{
+    position:absolute;
+    top:0;
+    right:0;
+    width:18px;
+    height:18px;
+    background:#222;
+    color:white;
+    border-radius:50%;
+    font-size:9px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.user-name{
+    font-size:10px;
+    max-width:90px;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+}
+
+/* HERO */
+
+.hero{
+    min-height:88vh;
+    display:flex;
+    align-items:center;
+    padding:8%;
+    color:white;
+    background:
+    linear-gradient(rgba(0,0,0,.48),rgba(0,0,0,.48)),
+    url("https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=1800&q=85");
+    background-size:cover;
+    background-position:center;
+}
+
+.hero-content{
+    max-width:650px;
+}
+
+.eyebrow{
+    font-size:10px;
+    letter-spacing:3px;
+    text-transform:uppercase;
+}
+
+.hero h1{
+    font-size:clamp(55px,8vw,100px);
+    line-height:.95;
+    margin:25px 0;
+}
+
+.hero p:not(.eyebrow){
+    font-size:14px;
+    line-height:1.8;
+    margin-bottom:28px;
+}
+
+.btn{
+    display:inline-block;
+    padding:16px 30px;
+    background:white;
+    color:#222;
+    text-decoration:none;
+    font-size:10px;
+    letter-spacing:2px;
+}
+
+/* SECTIONS */
+
+section{
+    padding:85px 6%;
+}
+
+.section-heading{
+    text-align:center;
+    margin-bottom:45px;
+}
+
+.section-heading h2{
+    font-size:50px;
+    margin-top:10px;
+}
+
+/* FILTER */
+
+.shop-controls{
+    display:grid;
+    grid-template-columns:2fr 1fr 1fr;
+    gap:12px;
+    margin-bottom:35px;
+}
+
+.shop-controls input,
+.shop-controls select{
+    width:100%;
+    padding:15px;
+    border:1px solid #ccc;
+    background:white;
+    outline:none;
+}
+
+/* PRODUCTS */
+
+.product-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:25px 16px;
+}
+
+.product-card{
+    background:white;
+    overflow:hidden;
+}
+
+.product-image{
+    height:390px;
+    position:relative;
+    overflow:hidden;
+}
+
+.product-image img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    transition:.5s;
+}
+
+.product-card:hover img{
+    transform:scale(1.05);
+}
+
+.badge{
+    position:absolute;
+    top:12px;
+    left:12px;
+    background:#222;
+    color:white;
+    padding:7px 10px;
+    font-size:8px;
+    letter-spacing:1px;
+    z-index:2;
+}
+
+.add-cart{
+    position:absolute;
+    bottom:0;
+    left:0;
+    width:100%;
+    padding:16px;
+    border:0;
+    background:#222;
+    color:white;
+    font-size:10px;
+    letter-spacing:2px;
+    transform:translateY(100%);
+    transition:.3s;
+}
+
+.product-card:hover .add-cart{
+    transform:translateY(0);
+}
+
+.product-info{
+    padding:18px;
+}
+
+.brand{
+    color:#777;
+    font-size:9px;
+    letter-spacing:1.5px;
+    text-transform:uppercase;
+}
+
+.product-info h3{
+    font-size:19px;
+    margin:7px 0;
+}
+
+.category{
+    color:#888;
+    font-size:10px;
+}
+
+.description{
+    color:#666;
+    font-size:11px;
+    line-height:1.7;
+    margin-top:10px;
+    min-height:55px;
+}
+
+.price{
+    margin-top:10px;
+    font-weight:600;
+}
+
+/* BANNER */
+
+.banner{
+    min-height:450px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    color:white;
+    background:
+    linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.55)),
+    url("https://images.unsplash.com/photo-1594223274512-ad4803739b7c?auto=format&fit=crop&w=1800&q=85");
+    background-size:cover;
+    background-position:center;
+}
+
+.banner h2{
+    font-size:60px;
+    margin:20px 0;
+}
+
+/* ABOUT */
+
+.about{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:65px;
+    align-items:center;
+}
+
+.about img{
+    width:100%;
+    height:540px;
+    object-fit:cover;
+}
+
+.about h2{
+    font-size:55px;
+    margin:20px 0;
+}
+
+.about p:not(.eyebrow){
+    color:#666;
+    line-height:1.9;
+    font-size:14px;
+    margin-bottom:18px;
+}
+
+/* NEWSLETTER */
+
+.newsletter{
+    text-align:center;
+    background:#e9e4db;
+}
+
+.newsletter h2{
+    font-size:42px;
+    margin:15px 0 25px;
+}
+
+.newsletter form{
+    max-width:550px;
+    margin:auto;
+    display:flex;
+}
+
+.newsletter input{
+    flex:1;
+    padding:15px;
+    border:1px solid #aaa;
+    background:transparent;
+}
+
+.newsletter button{
+    padding:15px 25px;
+    background:#222;
+    color:white;
+    border:0;
+}
+
+/* FOOTER */
+
+footer{
+    background:#222;
+    color:white;
+    text-align:center;
+    padding:60px 6%;
+}
+
+.footer-logo{
+    font-family:"Playfair Display",serif;
+    font-size:35px;
+    letter-spacing:7px;
+    margin-bottom:18px;
+}
+
+/* CART */
+
+.cart-overlay{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.5);
+    z-index:3000;
+    display:none;
+}
+
+.cart-overlay.active{
+    display:block;
+}
+
+.cart{
+    position:fixed;
+    top:0;
+    right:-450px;
+    width:430px;
+    max-width:100%;
+    height:100vh;
+    background:white;
+    z-index:4000;
+    padding:30px;
+    display:flex;
+    flex-direction:column;
+    transition:.4s;
+}
+
+.cart.active{
+    right:0;
+}
+
+.cart-header{
+    display:flex;
+    justify-content:space-between;
+    border-bottom:1px solid #ddd;
+    padding-bottom:20px;
+}
+
+.cart-header button{
+    background:none;
+    border:0;
+    font-size:30px;
+}
+
+.cart-items{
+    flex:1;
+    overflow-y:auto;
+}
+
+.empty{
+    text-align:center;
+    color:#888;
+    margin-top:50px;
+}
+
+.cart-item{
+    display:flex;
+    justify-content:space-between;
+    gap:10px;
+    padding:18px 0;
+    border-bottom:1px solid #ddd;
+}
+
+.cart-product{
+    display:flex;
+    gap:12px;
+}
+
+.cart-product img{
+    width:65px;
+    height:75px;
+    object-fit:cover;
+}
+
+.cart-product h4{
+    font-size:15px;
+}
+
+.cart-product p{
+    font-size:10px;
+    color:#777;
+}
+
+.quantity{
+    display:flex;
+    align-items:center;
+    gap:7px;
+    margin-top:8px;
+}
+
+.quantity button{
+    width:27px;
+    height:27px;
+    border:1px solid #ddd;
+    background:white;
+}
+
+.remove{
+    border:0;
+    background:none;
+    color:#888;
+    font-size:9px;
+    margin-top:7px;
+}
+
+.cart-bottom{
+    border-top:1px solid #ddd;
+    padding-top:20px;
+}
+
+.total{
+    display:flex;
+    justify-content:space-between;
+    margin-bottom:18px;
+}
+
+.checkout-btn,
+.place-order{
+    width:100%;
+    padding:16px;
+    background:#222;
+    color:white;
+    border:0;
+    letter-spacing:2px;
+}
+
+.continue-btn{
+    width:100%;
+    padding:14px;
+    background:white;
+    border:1px solid #222;
+    margin-top:10px;
+}
+
+/* MODALS */
+
+.checkout-modal,
+.login-modal{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.75);
+    z-index:7000;
+    display:none;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+}
+
+.checkout-modal.active,
+.login-modal.active{
+    display:flex;
+}
+
+.checkout-box,
+.login-box{
+    width:550px;
+    max-width:100%;
+    max-height:90vh;
+    overflow-y:auto;
+    background:#f7f5f0;
+    padding:40px;
+    position:relative;
+}
+
+.login-box{
+    width:450px;
+}
+
+.checkout-box h2,
+.login-box h2{
+    font-size:40px;
+    margin:12px 0 25px;
+}
+
+.checkout-close,
+.login-close{
+    position:absolute;
+    right:18px;
+    top:10px;
+    border:0;
+    background:none;
+    font-size:30px;
+}
+
+.checkout-box form,
+.login-box form{
+    display:flex;
+    flex-direction:column;
+}
+
+.checkout-box label,
+.login-box label{
+    font-size:10px;
+    letter-spacing:1px;
+    margin:12px 0 6px;
+    text-transform:uppercase;
+}
+
+.checkout-box input,
+.checkout-box textarea,
+.checkout-box select,
+.login-box input{
+    padding:14px;
+    border:1px solid #ccc;
+    background:white;
+    outline:none;
+}
+
+.checkout-box textarea{
+    height:85px;
+}
+
+.checkout-summary{
+    display:flex;
+    justify-content:space-between;
+    border-top:1px solid #ddd;
+    margin-top:20px;
+    padding-top:20px;
+}
+
+.place-order,
+.login-submit{
+    margin-top:20px;
+}
+
+.login-logo{
+    font-family:"Playfair Display",serif;
+    font-size:32px;
+    letter-spacing:6px;
+    text-align:center;
+    margin-bottom:28px;
+}
+
+.login-submit{
+    padding:16px;
+    background:#222;
+    color:white;
+    border:0;
+    letter-spacing:2px;
+}
+
+.switch-login{
+    text-align:center;
+    font-size:11px;
+    color:#777;
+    margin-top:22px;
+}
+
+.switch-login button{
+    background:none;
+    border:0;
+    text-decoration:underline;
+}
+
+/* SEARCH */
+
+.search-modal{
+    position:fixed;
+    inset:0;
+    background:rgba(20,20,20,.97);
+    color:white;
+    z-index:5000;
+    display:none;
+    align-items:center;
+    justify-content:center;
+}
+
+.search-modal.active{
+    display:flex;
+}
+
+.search-content{
+    width:70%;
+}
+
+.search-content h2{
+    font-size:55px;
+    margin:20px 0;
+}
+
+.search-content input{
+    width:100%;
+    padding:20px 0;
+    background:none;
+    border:0;
+    border-bottom:1px solid white;
+    color:white;
+    font-size:25px;
+    outline:none;
+}
+
+.close-search{
+    position:absolute;
+    top:20px;
+    right:30px;
+    background:none;
+    border:0;
+    color:white;
+    font-size:40px;
+}
+
+/* ACCESSIBILITY */
+
+.accessibility-panel{
+    position:fixed;
+    top:88px;
+    right:20px;
+    width:390px;
+    max-width:calc(100% - 30px);
+    max-height:calc(100vh - 105px);
+    overflow-y:auto;
+    background:white;
+    color:#222;
+    padding:28px;
+    z-index:9000;
+    box-shadow:0 20px 60px rgba(0,0,0,.3);
+    border:1px solid #ddd;
+    display:none;
+}
+
+.accessibility-panel.active{
+    display:block;
+}
+
+.accessibility-header{
+    display:flex;
+    justify-content:space-between;
+    gap:20px;
+    border-bottom:1px solid #ddd;
+    padding-bottom:18px;
+}
+
+.accessibility-header h2{
+    font-size:24px;
+    margin-top:7px;
+}
+
+.accessibility-header button{
+    border:0;
+    background:none;
+    font-size:30px;
+    min-width:42px;
+    height:42px;
+}
+
+.accessibility-option{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:20px;
+    padding:18px 0;
+    border-bottom:1px solid #eee;
+}
+
+.accessibility-option strong{
+    display:block;
+    font-size:13px;
+    margin-bottom:4px;
+}
+
+.accessibility-option small{
+    display:block;
+    color:#777;
+    font-size:10px;
+    line-height:1.5;
+}
+
+.text-controls{
+    display:flex;
+    gap:5px;
+}
+
+.text-controls button{
+    min-width:42px;
+    min-height:42px;
+    background:white;
+    border:1px solid #aaa;
+}
+
+.toggle{
+    position:relative;
+    width:50px;
+    height:28px;
+    flex-shrink:0;
+}
+
+.toggle input{
+    opacity:0;
+    width:0;
+    height:0;
+}
+
+.toggle span{
+    position:absolute;
+    inset:0;
+    background:#ccc;
+    border-radius:30px;
+}
+
+.toggle span:before{
+    content:"";
+    position:absolute;
+    width:22px;
+    height:22px;
+    left:3px;
+    top:3px;
+    background:white;
+    border-radius:50%;
+    transition:.2s;
+}
+
+.toggle input:checked + span{
+    background:#222;
+}
+
+.toggle input:checked + span:before{
+    transform:translateX(22px);
+}
+
+.accessibility-action,
+.stop-reading,
+.reset-accessibility{
+    width:100%;
+    padding:14px;
+    margin-top:15px;
+    border:1px solid #222;
+    background:white;
+    font-size:10px;
+    letter-spacing:1px;
+}
+
+.stop-reading{
+    background:#222;
+    color:white;
+}
+
+/* ACCESSIBILITY MODES */
+
+html.text-small{
+    font-size:90%;
+}
+
+html.text-large{
+    font-size:115%;
+}
+
+html.text-xlarge{
+    font-size:130%;
+}
+
+body.high-contrast{
+    background:#000;
+    color:#fff;
+}
+
+body.high-contrast .navbar,
+body.high-contrast .product-card,
+body.high-contrast .newsletter,
+body.high-contrast .cart,
+body.high-contrast .checkout-box,
+body.high-contrast .login-box,
+body.high-contrast .accessibility-panel{
+    background:#000;
+    color:#fff;
+    border-color:#fff;
+}
+
+body.high-contrast .navbar nav a{
+    color:#fff;
+}
+
+body.high-contrast .product-info .brand,
+body.high-contrast .product-info .category,
+body.high-contrast .description{
+    color:#fff;
+}
+
+body.large-buttons button,
+body.large-buttons .btn{
+    min-height:52px;
+}
+
+body.large-buttons .add-cart{
+    min-height:60px;
+}
+
+body.reduce-motion *,
+body.reduce-motion *::before,
+body.reduce-motion *::after{
+    animation-duration:.01ms !important;
+    animation-iteration-count:1 !important;
+    scroll-behavior:auto !important;
+    transition-duration:.01ms !important;
+}
+
+body.easy-reading{
+    font-family:Arial,sans-serif;
+    line-height:1.8;
+}
+
+body.easy-reading h1,
+body.easy-reading h2,
+body.easy-reading h3,
+body.easy-reading h4{
+    font-family:Arial,sans-serif;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:1100px){
+    .product-grid{
+        grid-template-columns:repeat(3,1fr);
+    }
+}
+
+@media(max-width:800px){
+
+    .navbar nav{
+        display:none;
+    }
+
+    .product-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .shop-controls{
+        grid-template-columns:1fr;
+    }
+
+    .about{
+        grid-template-columns:1fr;
+    }
+}
+
+@media(max-width:550px){
+
+    section{
+        padding:65px 5%;
+    }
+
+    .product-grid{
+        grid-template-columns:1fr;
+    }
+
+    .product-image{
+        height:430px;
+    }
+
+    .hero h1{
+        font-size:55px;
+    }
+
+    .banner h2,
+    .about h2,
+    .section-heading h2{
+        font-size:40px;
+    }
+
+    .newsletter form{
+        flex-direction:column;
+        gap:10px;
+    }
+
+    .user-name{
+        display:none;
+    }
+
+    .accessibility-panel{
+        top:80px;
+        right:10px;
+        width:calc(100% - 20px);
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<header class="navbar">
+
+    <div class="logo">LUXÉ</div>
+
+    <nav>
+        <a href="#home">HOME</a>
+        <a href="#shop">SHOP</a>
+        <a href="#brands">BRANDS</a>
+        <a href="#about">ABOUT</a>
+    </nav>
+
+    <div class="nav-actions">
+
+        <button onclick="openSearch()" aria-label="Search">
+            🔍
+        </button>
+
+        <button
+            class="accessibility-btn"
+            onclick="toggleAccessibility()"
+            aria-label="Accessibility settings">
+            ♿
+        </button>
+
+        <button
+            onclick="openLogin()"
+            id="accountButton"
+            aria-label="Login">
+            👤
+        </button>
+
+        <span class="user-name" id="userName"></span>
+
+        <button
+            onclick="openCart()"
+            aria-label="Shopping cart">
+
+            🛍️
+
+            <span id="cartCount">0</span>
+
+        </button>
+
+    </div>
+
+</header>
+
+
+<!-- HERO -->
+
+<section class="hero" id="home">
+
+    <div class="hero-content">
+
+        <p class="eyebrow">
+            LUXURY COLLECTION
+        </p>
+
+        <h1>
+            Timeless.<br>
+            Elegant.<br>
+            Yours.
+        </h1>
+
+        <p>
+            Discover an exclusive selection
+            of luxury bags from iconic brands.
+        </p>
+
+        <a href="#shop" class="btn">
+            SHOP NOW
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- BRANDS -->
+
+<section id="brands">
+
+    <div class="section-heading">
+
+        <p class="eyebrow">
+            DESIGNER COLLECTION
+        </p>
+
+        <h2>
+            Luxury Brands
+        </h2>
+
+    </div>
+
+    <div class="shop-controls">
+
+        <input
+            type="search"
+            id="searchInput"
+            placeholder="Search bag or brand..."
+            aria-label="Search products"
+            oninput="filterProducts()">
+
+        <select
+            id="brandFilter"
+            onchange="filterProducts()"
+            aria-label="Filter by brand">
+
+            <option value="All">All Brands</option>
+            <option>Chanel</option>
+            <option>Louis Vuitton</option>
+            <option>Gucci</option>
+            <option>Prada</option>
+            <option>Dior</option>
+            <option>Hermès</option>
+            <option>Saint Laurent</option>
+            <option>Fendi</option>
+            <option>Balenciaga</option>
+            <option>Burberry</option>
+            <option>Bottega Veneta</option>
+            <option>Celine</option>
+
+        </select>
+
+        <select
+            id="categoryFilter"
+            onchange="filterProducts()"
+            aria-label="Filter by category">
+
+            <option value="All">All Categories</option>
+            <option>Handbags</option>
+            <option>Shoulder Bags</option>
+            <option>Tote Bags</option>
+            <option>Crossbody Bags</option>
+            <option>Clutches</option>
+            <option>Mini Bags</option>
+
+        </select>
+
+    </div>
+
+</section>
+
+
+<!-- PRODUCTS -->
+
+<section id="shop" style="padding-top:0">
+
+    <div class="product-grid" id="productGrid"></div>
+
+</section>
+
+
+<!-- BANNER -->
+
+<section class="banner">
+
+    <div>
+
+        <p class="eyebrow">
+            THE LUXÉ EXPERIENCE
+        </p>
+
+        <h2>
+            Luxury is<br>
+            always in style.
+        </h2>
+
+        <a href="#shop" class="btn">
+            EXPLORE BAGS
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- ABOUT -->
+
+<section class="about" id="about">
+
+    <div>
+
+        <img
+            src="https://images.unsplash.com/photo-1548036328-c9fa89d128fa?auto=format&fit=crop&w=1000&q=85"
+            alt="Luxury handbag">
+
+    </div>
+
+    <div>
+
+        <p class="eyebrow">
+            OUR STORY
+        </p>
+
+        <h2>
+            Designed for<br>
+            the extraordinary.
+        </h2>
+
+        <p>
+            LUXÉ is a luxury bag e-commerce
+            website project designed for a
+            beautiful and accessible shopping
+            experience.
+        </p>
+
+        <p>
+            Browse designer collections,
+            create an account, add products
+            to your shopping bag and checkout.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- NEWSLETTER -->
+
+<section class="newsletter">
+
+    <p class="eyebrow">
+        JOIN LUXÉ
+    </p>
+
+    <h2>
+        Discover something extraordinary.
+    </h2>
+
+    <form onsubmit="subscribe(event)">
+
+        <input
+            type="email"
+            placeholder="Your email address"
+            aria-label="Email address"
+            required>
+
+        <button>
+            SUBSCRIBE
+        </button>
+
+    </form>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    <div class="footer-logo">
+        LUXÉ
+    </div>
+
+    <p>
+        Luxury Bags Collection
+    </p>
+
+    <br>
+
+    <small>
+        © 2026 LUXÉ — E-Commerce Project
+    </small>
+
+</footer>
+
+
+<!-- SEARCH -->
+
+<div class="search-modal" id="searchModal">
+
+    <button
+        class="close-search"
+        onclick="closeSearch()"
+        aria-label="Close search">
+        ×
+    </button>
+
+    <div class="search-content">
+
+        <p class="eyebrow">SEARCH</p>
+
+        <h2>
+            Find your perfect bag.
+        </h2>
+
+        <input
+            id="modalSearch"
+            type="search"
+            placeholder="Search..."
+            oninput="modalSearch()"
+            aria-label="Search">
+
+    </div>
+
+</div>
+
+
+<!-- CART -->
+
+<div
+    class="cart-overlay"
+    id="cartOverlay"
+    onclick="closeCart()">
+</div>
+
+<aside class="cart" id="cart">
+
+    <div class="cart-header">
+
+        <h2>
+            Shopping Bag
+        </h2>
+
+        <button
+            onclick="closeCart()"
+            aria-label="Close cart">
+            ×
+        </button>
+
+    </div>
+
+    <div class="cart-items" id="cartItems"></div>
+
+    <div class="cart-bottom">
+
+        <div class="total">
+
+            <span>Total</span>
+
+            <strong>
+                $<span id="cartTotal">0.00</span>
+            </strong>
+
+        </div>
+
+        <button
+            class="checkout-btn"
+            onclick="checkout()">
+
+            PROCEED TO CHECKOUT
+
+        </button>
+
+        <button
+            class="continue-btn"
+            onclick="closeCart()">
+
+            CONTINUE SHOPPING
+
+        </button>
+
+    </div>
+
+</aside>
+
+
+<!-- CHECKOUT -->
+
+<div class="checkout-modal" id="checkoutModal">
+
+    <div class="checkout-box">
+
+        <button
+            class="checkout-close"
+            onclick="closeCheckout()"
+            aria-label="Close checkout">
+            ×
+        </button>
+
+        <p class="eyebrow">
+            CHECKOUT
+        </p>
+
+        <h2>
+            Complete Your Order
+        </h2>
+
+        <form onsubmit="placeOrder(event)">
+
+            <label>Full Name</label>
+
+            <input
+                id="customerName"
+                required>
+
+            <label>Email</label>
+
+            <input
+                type="email"
+                id="customerEmail"
+                required>
+
+            <label>Delivery Address</label>
+
+            <textarea
+                id="customerAddress"
+                required></textarea>
+
+            <label>Payment Method</label>
+
+            <select id="paymentMethod">
+
+                <option>
+                    Cash on Delivery
+                </option>
+
+                <option>
+                    GCash
+                </option>
+
+                <option>
+                    Credit / Debit Card
+                </option>
+
+            </select>
+
+            <div class="checkout-summary">
+
+                <span>
+                    Order Total
+                </span>
+
+                <strong>
+                    $<span id="checkoutTotal">
+                        0.00
+                    </span>
+                </strong>
+
+            </div>
+
+            <button
+                class="place-order"
+                type="submit">
+
+                PLACE ORDER
+
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+<!-- LOGIN / SIGN UP -->
+
+<div class="login-modal" id="loginModal">
+
+    <div class="login-box">
+
+        <button
+            class="login-close"
+            onclick="closeLogin()"
+            aria-label="Close login">
+            ×
+        </button>
+
+        <div class="login-logo">
+            LUXÉ
+        </div>
+
+        <p class="eyebrow">
+            WELCOME
+        </p>
+
+        <h2 id="loginTitle">
+            Sign In
+        </h2>
+
+
+        <form
+            id="loginForm"
+            onsubmit="login(event)">
+
+            <label>Email</label>
+
+            <input
+                type="email"
+                id="loginEmail"
+                placeholder="Enter your email"
+                autocomplete="email"
+                required>
+
+            <label>Password</label>
+
+            <input
+                type="password"
+                id="loginPassword"
+                placeholder="Enter your password"
+                autocomplete="current-password"
+                required>
+
+            <button
+                class="login-submit"
+                type="submit">
+
+                SIGN IN
+
+            </button>
+
+        </form>
+
+
+        <form
+            id="signupForm"
+            onsubmit="signup(event)"
+            style="display:none">
+
+            <label>Full Name</label>
+
+            <input
+                type="text"
+                id="signupName"
+                placeholder="Enter your name"
+                autocomplete="name"
+                required>
+
+            <label>Email</label>
+
+            <input
+                type="email"
+                id="signupEmail"
+                placeholder="Enter your email"
+                autocomplete="email"
+                required>
+
+            <label>Password</label>
+
+            <input
+                type="password"
+                id="signupPassword"
+                placeholder="Create a password"
+                autocomplete="new-password"
+                minlength="6"
+                required>
+
+            <button
+                class="login-submit"
+                type="submit">
+
+                CREATE ACCOUNT
+
+            </button>
+
+        </form>
+
+
+        <p class="switch-login">
+
+            <span id="switchText">
+                Don't have an account?
+            </span>
+
+            <button
+                type="button"
+                onclick="switchLogin()"
+                id="switchButton">
+
+                Sign Up
+
+            </button>
+
+        </p>
+
+    </div>
+
+</div>
+
+
+<!-- ACCESSIBILITY -->
+
+<div
+    class="accessibility-panel"
+    id="accessibilityPanel">
+
+    <div class="accessibility-header">
+
+        <div>
+
+            <p class="eyebrow">
+                ACCESSIBILITY
+            </p>
+
+            <h2>
+                Make LUXÉ easier to use
+            </h2>
+
+        </div>
+
+        <button
+            onclick="toggleAccessibility()"
+            aria-label="Close accessibility settings">
+
+            ×
+
+        </button>
+
+    </div>
+
+
+    <div class="accessibility-option">
+
+        <div>
+
+            <strong>Text Size</strong>
+
+            <small>
+                Make text easier to read.
+            </small>
+
+        </div>
+
+        <div class="text-controls">
+
+            <button onclick="changeTextSize(-1)">
+                A−
+            </button>
+
+            <button onclick="resetTextSize()">
+                A
+            </button>
+
+            <button onclick="changeTextSize(1)">
+                A+
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <div class="accessibility-option">
+
+        <div>
+
+            <strong>High Contrast</strong>
+
+            <small>
+                Improve visibility.
+            </small>
+
+        </div>
+
+        <label class="toggle">
+
+            <input
+                type="checkbox"
+                id="contrastToggle"
+                onchange="toggleContrast()">
+
+            <span></span>
+
+        </label>
+
+    </div>
+
+
+    <div class="accessibility-option">
+
+        <div>
+
+            <strong>Larger Buttons</strong>
+
+            <small>
+                Easier for touch and motor control.
+            </small>
+
+        </div>
+
+        <label class="toggle">
+
+            <input
+                type="checkbox"
+                id="buttonToggle"
+                onchange="toggleLargeButtons()">
+
+            <span></span>
+
+        </label>
+
+    </div>
+
+
+    <div class="accessibility-option">
+
+        <div>
+
+            <strong>Reduce Motion</strong>
+
+            <small>
+                Reduce animation and movement.
+            </small>
+
+        </div>
+
+        <label class="toggle">
+
+            <input
+                type="checkbox"
+                id="motionToggle"
+                onchange="toggleMotion()">
+
+            <span></span>
+
+        </label>
+
+    </div>
+
+
+    <div class="accessibility-option">
+
+        <div>
+
+            <strong>Easy Reading</strong>
+
+            <small>
+                Use a clearer reading style.
+            </small>
+
+        </div>
+
+        <label class="toggle">
+
+            <input
+                type="checkbox"
+                id="readingToggle"
+                onchange="toggleEasyReading()">
+
+            <span></span>
+
+        </label>
+
+    </div>
+
+
+    <div class="accessibility-option">
+
+        <div>
+
+            <strong>Read Page Aloud</strong>
+
+            <small>
+                Hear the page content.
+            </small>
+
+        </div>
+
+        <button
+            class="accessibility-action"
+            onclick="readPage()">
+
+            🔊 READ
+
+        </button>
+
+    </div>
+
+
+    <button
+        class="stop-reading"
+        onclick="stopReading()">
+
+        ■ STOP READING
+
+    </button>
+
+
+    <button
+        class="reset-accessibility"
+        onclick="resetAccessibility()">
+
+        RESET ACCESSIBILITY SETTINGS
+
+    </button>
+
+</div>
+
+
+<script>
+
+/* PRODUCT DATABASE */
+
+const products=[
+
+{
+id:1,
+brand:"Chanel",
+name:"Classic Flap Bag",
+category:"Shoulder Bags",
+price:850,
+description:"An elegant quilted shoulder bag with a timeless design, perfect for sophisticated everyday looks.",
+image:"https://images.unsplash.com/photo-1594223274512-ad4803739b7c?auto=format&fit=crop&w=900&q=85",
+badge:"ICONIC"
+},
+
+{
+id:2,
+brand:"Chanel",
+name:"Mini Classic Bag",
+category:"Mini Bags",
+price:720,
+description:"A compact luxury bag designed for effortless everyday style and elegant occasions.",
+image:"https://images.unsplash.com/photo-1566150905458-1bf1fc113f0d?auto=format&fit=crop&w=900&q=85",
+badge:"NEW"
+},
+
+{
+id:3,
+brand:"Louis Vuitton",
+name:"Classic Monogram Tote",
+category:"Tote Bags",
+price:980,
+description:"A spacious designer tote combining classic style with everyday practicality.",
+image:"https://images.unsplash.com/photo-1590874103328-eac38a683ce7?auto=format&fit=crop&w=900&q=85",
+badge:"BESTSELLER"
+},
+
+{
+id:4,
+brand:"Louis Vuitton",
+name:"Elegant Crossbody",
+category:"Crossbody Bags",
+price:760,
+description:"A stylish crossbody bag offering a sleek look and comfortable wear.",
+image:"https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=900&q=85",
+badge:"NEW"
+},
+
+{
+id:5,
+brand:"Gucci",
+name:"GG Marmont Bag",
+category:"Shoulder Bags",
+price:780,
+description:"A sophisticated shoulder bag featuring an iconic luxury-inspired design.",
+image:"https://images.unsplash.com/photo-1591561954557-26941169b49e?auto=format&fit=crop&w=900&q=85",
+badge:"POPULAR"
+},
+
+{
+id:6,
+brand:"Gucci",
+name:"Gucci Mini Bag",
+category:"Mini Bags",
+price:650,
+description:"A small and elegant bag perfect for carrying your everyday essentials.",
+image:"https://images.unsplash.com/photo-1566150902887-9679b8b1a4d7?auto=format&fit=crop&w=900&q=85",
+badge:"NEW"
+},
+
+{
+id:7,
+brand:"Prada",
+name:"Prada Re-Edition",
+category:"Shoulder Bags",
+price:730,
+description:"A refined shoulder bag with a modern silhouette and luxurious appearance.",
+image:"https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=900&q=85",
+badge:"NEW"
+},
+
+{
+id:8,
+brand:"Prada",
+name:"Saffiano Handbag",
+category:"Handbags",
+price:860,
+description:"A structured handbag designed for polished and sophisticated occasions.",
+image:"https://images.unsplash.com/photo-1548036328-c9fa89d128fa?auto=format&fit=crop&w=900&q=85",
+badge:"CLASSIC"
+},
+
+{
+id:9,
+brand:"Dior",
+name:"Lady Dior Bag",
+category:"Handbags",
+price:1100,
+description:"An elegant statement handbag that combines classic details with modern luxury.",
+image:"https://images.unsplash.com/photo-1548036328-c9fa89d128fa?auto=format&fit=crop&w=900&q=85",
+badge:"ICONIC"
+},
+
+{
+id:10,
+brand:"Dior",
+name:"Dior Saddle Bag",
+category:"Shoulder Bags",
+price:1050,
+description:"A distinctive designer shoulder bag with a fashionable and recognizable shape.",
+image:"https://images.unsplash.com/photo-1590874103328-eac38a683ce7?auto=format&fit=crop&w=900&q=85",
+badge:"BESTSELLER"
+},
+
+{
+id:11,
+brand:"Hermès",
+name:"Birkin Style Bag",
+category:"Handbags",
+price:1450,
+description:"A premium handbag inspired by timeless luxury and exceptional craftsmanship.",
+image:"https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=900&q=85",
+badge:"EXCLUSIVE"
+},
+
+{
+id:12,
+brand:"Hermès",
+name:"Elegant Leather Tote",
+category:"Tote Bags",
+price:1250,
+description:"A spacious leather tote designed for both elegance and everyday functionality.",
+image:"https://images.unsplash.com/photo-1590874103328-eac38a683ce7?auto=format&fit=crop&w=900&q=85",
+badge:"LUXURY"
+},
+
+{
+id:13,
+brand:"Saint Laurent",
+name:"YSL Classic Bag",
+category:"Shoulder Bags",
+price:820,
+description:"A refined designer bag with a minimalist silhouette and signature details.",
+image:"https://images.unsplash.com/photo-1594223274512-ad4803739b49e?auto=format&fit=crop&w=900&q=85",
+badge:"POPULAR"
+},
+
+{
+id:14,
+brand:"Saint Laurent",
+name:"Kate Crossbody",
+category:"Crossbody Bags",
+price:740,
+description:"A sleek crossbody bag made for effortless day-to-night styling.",
+image:"https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=900&q=85",
+badge:"NEW"
+},
+
+{
+id:15,
+brand:"Fendi",
+name:"Fendi Baguette",
+category:"Shoulder Bags",
+price:880,
+description:"An iconic compact bag that brings a sophisticated touch to any outfit.",
+image:"https://images.unsplash.com/photo-1566150905458-1bf1fc113f0d?auto=format&fit=crop&w=900&q=85",
+badge:"ICONIC"
+},
+
+{
+id:16,
+brand:"Fendi",
+name:"Fendi Mini Bag",
+category:"Mini Bags",
+price:670,
+description:"A chic mini bag designed to hold your essentials while keeping your look elegant.",
+image:"https://images.unsplash.com/photo-1591561954557-26941169b49e?auto=format&fit=crop&w=900&q=85",
+badge:"NEW"
+},
+
+{
+id:17,
+brand:"Balenciaga",
+name:"City Bag",
+category:"Handbags",
+price:760,
+description:"A fashionable handbag with a distinctive silhouette and contemporary luxury appeal.",
+image:"https://images.unsplash.com/photo-1548036328-c9fa89d128fa?auto=format&fit=crop&w=900&q=85",
+badge:"TRENDING"
+},
+
+{
+id:18,
+brand:"Balenciaga",
+name:"Hourglass Bag",
+category:"Shoulder Bags",
+price:830,
+description:"A modern shoulder bag featuring a bold shape and elegant designer aesthetic.",
+image:"https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=900&q=85",
+badge:"NEW"
+},
+
+{
+id:19,
+brand:"Burberry",
+name:"Classic Check Tote",
+category:"Tote Bags",
+price:680,
+description:"A classic tote combining recognizable patterns with practical everyday space.",
+image:"https://images.unsplash.com/photo-1590874103328-eac38a683ce7?auto=format&fit=crop&w=900&q=85",
+badge:"CLASSIC"
+},
+
+{
+id:20,
+brand:"Burberry",
+name:"Leather Crossbody",
+category:"Crossbody Bags",
+price:610,
+description:"A sophisticated leather crossbody designed for comfortable everyday use.",
+image:"https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=900&q=85",
+badge:"NEW"
+},
+
+{
+id:21,
+brand:"Bottega Veneta",
+name:"Intrecciato Bag",
+category:"Shoulder Bags",
+price:930,
+description:"A premium woven-style bag with a luxurious and sophisticated appearance.",
+image:"https://images.unsplash.com/photo-1594223274512-ad4803739b7c?auto=format&fit=crop&w=900&q=85",
+badge:"PREMIUM"
+},
+
+{
+id:22,
+brand:"Bottega Veneta",
+name:"Mini Cassette Bag",
+category:"Mini Bags",
+price:720,
+description:"A compact statement bag with a modern design for stylish everyday looks.",
+image:"https://images.unsplash.com/photo-1566150902887-9679b8b1a4d7?auto=format&fit=crop&w=900&q=85",
+badge:"NEW"
+},
+
+{
+id:23,
+brand:"Celine",
+name:"Triomphe Bag",
+category:"Shoulder Bags",
+price:850,
+description:"An elegant shoulder bag with a timeless silhouette and sophisticated character.",
+image:"https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=900&q=85",
+badge:"ICONIC"
+},
+
+{
+id:24,
+brand:"Celine",
+name:"Classic Tote",
+category:"Tote Bags",
+price:790,
+description:"A practical luxury tote designed with clean lines and an elegant finish.",
+image:"https://images.unsplash.com/photo-1548036328-c9fa89d128fa?auto=format&fit=crop&w=900&q=85",
+badge:"CLASSIC"
+},
+
+{
+id:25,
+brand:"Chanel",
+name:"Quilted Handbag",
+category:"Handbags",
+price:790,
+description:"A timeless quilted handbag that adds elegance and sophistication to any outfit.",
+image:"https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=900&q=85",
+badge:"POPULAR"
+},
+
+{
+id:26,
+brand:"Prada",
+name:"Elegant Mini Bag",
+category:"Mini Bags",
+price:620,
+description:"A refined mini bag that combines compact practicality with modern luxury.",
+image:"https://images.unsplash.com/photo-1594223274512-ad4803739b7c?auto=format&fit=crop&w=900&q=85",
+badge:"LIMITED"
+},
+
+{
+id:27,
+brand:"Dior",
+name:"Dior Mini Clutch",
+category:"Clutches",
+price:690,
+description:"A glamorous mini clutch designed for special occasions and elegant evenings.",
+image:"https://images.unsplash.com/photo-1566150902887-9679b8b1a4d7?auto=format&fit=crop&w=900&q=85",
+badge:"NEW"
+},
+
+{
+id:28,
+brand:"Gucci",
+name:"Leather Top Handle",
+category:"Handbags",
+price:920,
+description:"A sophisticated top-handle bag featuring a polished luxury-inspired look.",
+image:"https://images.unsplash.com/photo-1566150902887-9679b8b1a4d7?auto=format&fit=crop&w=900&q=85",
+badge:"PREMIUM"
+},
+
+{
+id:29,
+brand:"Celine",
+name:"Celine Mini Bag",
+category:"Mini Bags",
+price:640,
+description:"A stylish mini bag designed for carrying essentials with effortless elegance.",
+image:"https://images.unsplash.com/photo-1591561954557-26941169b49e?auto=format&fit=crop&w=900&q=85",
+badge:"NEW"
+},
+
+{
+id:30,
+brand:"Louis Vuitton",
+name:"Luxury Shoulder Bag",
+category:"Shoulder Bags",
+price:890,
+description:"An iconic-inspired shoulder bag combining elegant style with everyday versatility.",
+image:"https://images.unsplash.com/photo-1548036328-c9fa89d128fa?auto=format&fit=crop&w=900&q=85",
+badge:"ICONIC"
+}];
+
+
+/* CART */
+
+let cart=JSON.parse(localStorage.getItem("luxeCart"))||[];
+
+let currentUser=
+JSON.parse(localStorage.getItem("luxeCurrentUser"))||null;
+
+let signupMode=false;
+
+let textSize=
+localStorage.getItem("luxeTextSize")||"normal";
+
+
+function displayProducts(list){
+
+    const grid=document.getElementById("productGrid");
+
+    grid.innerHTML="";
+
+    if(list.length===0){
+
+        grid.innerHTML=`
+        <div style="grid-column:1/-1;text-align:center;padding:70px">
+            <h2>No bags found</h2>
+            <p>Try another search or category.</p>
+        </div>`;
+
+        return;
+    }
+
+    list.forEach(product=>{
+
+        grid.innerHTML+=`
+
+        <article class="product-card">
+
+            <div class="product-image">
+
+                <span class="badge">
+                    ${product.badge}
+                </span>
+
+                <img
+                    src="${product.image}"
+                    alt="${product.brand} ${product.name}">
+
+                <button
+                    class="add-cart"
+                    onclick="addToCart(${product.id})">
+
+                    ADD TO CART
+
+                </button>
+
+            </div>
+
+            <div class="product-info">
+
+                <div class="brand">
+                    ${product.brand}
+                </div>
+
+                <h3>
+                    ${product.name}
+                </h3>
+
+                <div class="category">
+                    ${product.category}
+                </div>
+
+                <p class="description">
+                    ${product.description}
+                </p>
+
+                <div class="price">
+                    $${product.price.toFixed(2)}
+                </div>
+
+            </div>
+
+        </article>`;
+
+    });
+}
+
+
+function filterProducts(){
+
+    const search=
+    document.getElementById("searchInput")
+    .value.toLowerCase();
+
+    const brand=
+    document.getElementById("brandFilter").value;
+
+    const category=
+    document.getElementById("categoryFilter").value;
+
+    let result=products;
+
+    if(brand!=="All"){
+        result=result.filter(p=>p.brand===brand);
+    }
+
+    if(category!=="All"){
+        result=result.filter(p=>p.category===category);
+    }
+
+    if(search){
+
+        result=result.filter(p=>
+            p.name.toLowerCase().includes(search) ||
+            p.brand.toLowerCase().includes(search) ||
+            p.description.toLowerCase().includes(search)
+        );
+
+    }
+
+    displayProducts(result);
+}
+
+
+/* CART FUNCTIONS */
+
+function addToCart(id){
+
+    const product=products.find(p=>p.id===id);
+
+    const existing=cart.find(p=>p.id===id);
+
+    if(existing){
+        existing.quantity++;
+    }else{
+        cart.push({
+            ...product,
+            quantity:1
+        });
+    }
+
+    saveCart();
+    updateCart();
+    openCart();
+}
+
+
+function saveCart(){
+
+    localStorage.setItem(
+        "luxeCart",
+        JSON.stringify(cart)
+    );
+
+}
+
+
+function updateCart(){
+
+    const container=document.getElementById("cartItems");
+
+    const count=document.getElementById("cartCount");
+
+    const totalElement=document.getElementById("cartTotal");
+
+    container.innerHTML="";
+
+    let total=0;
+    let itemCount=0;
+
+    if(cart.length===0){
+
+        container.innerHTML=`
+            <p class="empty">
+                Your shopping bag is empty.
+            </p>`;
+
+    }
+
+    cart.forEach(item=>{
+
+        total+=item.price*item.quantity;
+
+        itemCount+=item.quantity;
+
+        container.innerHTML+=`
+
+        <div class="cart-item">
+
+            <div class="cart-product">
+
+                <img
+                    src="${item.image}"
+                    alt="${item.name}">
+
+                <div>
+
+                    <h4>${item.name}</h4>
+
+                    <p>${item.brand}</p>
+
+                    <div class="quantity">
+
+                        <button onclick="decrease(${item.id})">
+                            −
+                        </button>
+
+                        <span>
+                            ${item.quantity}
+                        </span>
+
+                        <button onclick="increase(${item.id})">
+                            +
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div>
+
+                <strong>
+                    $${(item.price*item.quantity).toFixed(2)}
+                </strong>
+
+                <br>
+
+                <button
+                    class="remove"
+                    onclick="removeItem(${item.id})">
+
+                    REMOVE
+
+                </button>
+
+            </div>
+
+        </div>`;
+
+    });
+
+    count.textContent=itemCount;
+
+    totalElement.textContent=total.toFixed(2);
+}
+
+
+function increase(id){
+
+    const item=cart.find(p=>p.id===id);
+
+    if(item)item.quantity++;
+
+    saveCart();
+    updateCart();
+}
+
+
+function decrease(id){
+
+    const item=cart.find(p=>p.id===id);
+
+    if(!item)return;
+
+    if(item.quantity>1){
+        item.quantity--;
+    }else{
+        cart=cart.filter(p=>p.id!==id);
+    }
+
+    saveCart();
+    updateCart();
+}
+
+
+function removeItem(id){
+
+    cart=cart.filter(p=>p.id!==id);
+
+    saveCart();
+    updateCart();
+}
+
+
+function openCart(){
+
+    document.getElementById("cart")
+    .classList.add("active");
+
+    document.getElementById("cartOverlay")
+    .classList.add("active");
+}
+
+
+function closeCart(){
+
+    document.getElementById("cart")
+    .classList.remove("active");
+
+    document.getElementById("cartOverlay")
+    .classList.remove("active");
+}
+
+
+/* CHECKOUT */
+
+function checkout(){
+
+    if(cart.length===0){
+
+        alert("Your shopping bag is empty.");
+
+        return;
+    }
+
+    if(!currentUser){
+
+        alert(
+            "Please Sign In or Sign Up before checkout."
+        );
+
+        closeCart();
+
+        openLogin();
+
+        return;
+    }
+
+    const total=
+    cart.reduce(
+        (sum,item)=>
+        sum+item.price*item.quantity,
+        0
+    );
+
+    document.getElementById("checkoutTotal")
+    .textContent=total.toFixed(2);
+
+    document.getElementById("customerName")
+    .value=currentUser.name;
+
+    document.getElementById("customerEmail")
+    .value=currentUser.email;
+
+    closeCart();
+
+    document.getElementById("checkoutModal")
+    .classList.add("active");
+}
+
+
+function closeCheckout(){
+
+    document.getElementById("checkoutModal")
+    .classList.remove("active");
+}
+
+
+function placeOrder(event){
+
+    event.preventDefault();
+
+    const orderNumber=
+        "LUXE-" +
+        Math.floor(100000+Math.random()*900000);
+
+    alert(
+`ORDER CONFIRMED!
+
+Order Number:
+${orderNumber}
+
+Thank you, ${currentUser.name}!
+
+Your order has been placed successfully.`
+    );
+
+    cart=[];
+
+    saveCart();
+
+    updateCart();
+
+    closeCheckout();
+
+    event.target.reset();
+}
+
+
+/* LOGIN */
+
+function openLogin(){
+
+    if(currentUser){
+
+        const logout=confirm(
+            "You are logged in as " +
+            currentUser.name +
+            ".\n\nDo you want to log out?"
+        );
+
+        if(logout){
+            logoutUser();
+        }
+
+        return;
+    }
+
+    document.getElementById("loginModal")
+    .classList.add("active");
+}
+
+
+function closeLogin(){
+
+    document.getElementById("loginModal")
+    .classList.remove("active");
+}
+
+
+function switchLogin(){
+
+    signupMode=!signupMode;
+
+    const loginForm=
+    document.getElementById("loginForm");
+
+    const signupForm=
+    document.getElementById("signupForm");
+
+    const title=
+    document.getElementById("loginTitle");
+
+    const switchText=
+    document.getElementById("switchText");
+
+    const switchButton=
+    document.getElementById("switchButton");
+
+    if(signupMode){
+
+        loginForm.style.display="none";
+
+        signupForm.style.display="flex";
+
+        title.textContent="Create Account";
+
+        switchText.textContent=
+            "Already have an account?";
+
+        switchButton.textContent="Sign In";
+
+    }else{
+
+        loginForm.style.display="flex";
+
+        signupForm.style.display="none";
+
+        title.textContent="Sign In";
+
+        switchText.textContent=
+            "Don't have an account?";
+
+        switchButton.textContent="Sign Up";
+    }
+}
+
+
+function signup(event){
+
+    event.preventDefault();
+
+    const name=
+    document.getElementById("signupName")
+    .value.trim();
+
+    const email=
+    document.getElementById("signupEmail")
+    .value.trim();
+
+    const password=
+    document.getElementById("signupPassword")
+    .value;
+
+    let users=
+    JSON.parse(
+        localStorage.getItem("luxeUsers")
+    )||[];
+
+    const exists=
+    users.some(
+        user=>
+        user.email.toLowerCase()===
+        email.toLowerCase()
+    );
+
+    if(exists){
+
+        alert(
+            "This email is already registered."
+        );
+
+        return;
+    }
+
+    users.push({
+        name:name,
+        email:email,
+        password:password
+    });
+
+    localStorage.setItem(
+        "luxeUsers",
+        JSON.stringify(users)
+    );
+
+    currentUser={
+        name:name,
+        email:email
+    };
+
+    localStorage.setItem(
+        "luxeCurrentUser",
+        JSON.stringify(currentUser)
+    );
+
+    updateUserDisplay();
+
+    closeLogin();
+
+    event.target.reset();
+
+    alert(
+        "Account created successfully!\n\nWelcome to LUXÉ, "+
+        name+"!"
+    );
+}
+
+
+function login(event){
+
+    event.preventDefault();
+
+    const email=
+    document.getElementById("loginEmail")
+    .value.trim();
+
+    const password=
+    document.getElementById("loginPassword")
+    .value;
+
+    const users=
+    JSON.parse(
+        localStorage.getItem("luxeUsers")
+    )||[];
+
+    const user=
+    users.find(
+        user=>
+        user.email.toLowerCase()===
+        email.toLowerCase() &&
+        user.password===password
+    );
+
+    if(!user){
+
+        alert("Invalid email or password.");
+
+        return;
+    }
+
+    currentUser={
+        name:user.name,
+        email:user.email
+    };
+
+    localStorage.setItem(
+        "luxeCurrentUser",
+        JSON.stringify(currentUser)
+    );
+
+    updateUserDisplay();
+
+    closeLogin();
+
+    event.target.reset();
+
+    alert(
+        "Welcome back, "+user.name+"!"
+    );
+}
+
+
+function logoutUser(){
+
+    currentUser=null;
+
+    localStorage.removeItem(
+        "luxeCurrentUser"
+    );
+
+    updateUserDisplay();
+
+    alert(
+        "You have been logged out."
+    );
+}
+
+
+function updateUserDisplay(){
+
+    const name=
+    document.getElementById("userName");
+
+    if(currentUser){
+
+        name.textContent=currentUser.name;
+
+    }else{
+
+        name.textContent="";
+
+    }
+}
+
+
+/* SEARCH */
+
+function openSearch(){
+
+    document.getElementById("searchModal")
+    .classList.add("active");
+
+    setTimeout(()=>{
+
+        document.getElementById("modalSearch")
+        .focus();
+
+    },100);
+}
+
+
+function closeSearch(){
+
+    document.getElementById("searchModal")
+    .classList.remove("active");
+}
+
+
+function modalSearch(){
+
+    const value=
+    document.getElementById("modalSearch")
+    .value.toLowerCase();
+
+    const result=
+    products.filter(p=>
+        p.name.toLowerCase().includes(value) ||
+        p.brand.toLowerCase().includes(value) ||
+        p.description.toLowerCase().includes(value)
+    );
+
+    displayProducts(result);
+}
+
+
+/* NEWSLETTER */
+
+function subscribe(event){
+
+    event.preventDefault();
+
+    alert(
+        "Thank you for subscribing to LUXÉ!"
+    );
+
+    event.target.reset();
+}
+
+
+/* ACCESSIBILITY */
+
+function toggleAccessibility(){
+
+    document.getElementById(
+        "accessibilityPanel"
+    ).classList.toggle("active");
+}
+
+
+function applyTextSize(){
+
+    document.documentElement.classList.remove(
+        "text-small",
+        "text-large",
+        "text-xlarge"
+    );
+
+    if(textSize==="small"){
+        document.documentElement.classList.add(
+            "text-small"
+        );
+    }
+
+    if(textSize==="large"){
+        document.documentElement.classList.add(
+            "text-large"
+        );
+    }
+
+    if(textSize==="xlarge"){
+        document.documentElement.classList.add(
+            "text-xlarge"
+        );
+    }
+}
+
+
+function changeTextSize(direction){
+
+    const sizes=[
+        "small",
+        "normal",
+        "large",
+        "xlarge"
+    ];
+
+    let index=sizes.indexOf(textSize);
+
+    index+=direction;
+
+    if(index<0)index=0;
+
+    if(index>=sizes.length)
+        index=sizes.length-1;
+
+    textSize=sizes[index];
+
+    localStorage.setItem(
+        "luxeTextSize",
+        textSize
+    );
+
+    applyTextSize();
+}
+
+
+function resetTextSize(){
+
+    textSize="normal";
+
+    localStorage.setItem(
+        "luxeTextSize",
+        textSize
+    );
+
+    applyTextSize();
+}
+
+
+function toggleContrast(){
+
+    const enabled=
+    document.getElementById(
+        "contrastToggle"
+    ).checked;
+
+    document.body.classList.toggle(
+        "high-contrast",
+        enabled
+    );
+
+    localStorage.setItem(
+        "luxeContrast",
+        enabled
+    );
+}
+
+
+function toggleLargeButtons(){
+
+    const enabled=
+    document.getElementById(
+        "buttonToggle"
+    ).checked;
+
+    document.body.classList.toggle(
+        "large-buttons",
+        enabled
+    );
+
+    localStorage.setItem(
+        "luxeLargeButtons",
+        enabled
+    );
+}
+
+
+function toggleMotion(){
+
+    const enabled=
+    document.getElementById(
+        "motionToggle"
+    ).checked;
+
+    document.body.classList.toggle(
+        "reduce-motion",
+        enabled
+    );
+
+    localStorage.setItem(
+        "luxeReduceMotion",
+        enabled
+    );
+}
+
+
+function toggleEasyReading(){
+
+    const enabled=
+    document.getElementById(
+        "readingToggle"
+    ).checked;
+
+    document.body.classList.toggle(
+        "easy-reading",
+        enabled
+    );
+
+    localStorage.setItem(
+        "luxeEasyReading",
+        enabled
+    );
+}
+
+
+function readPage(){
+
+    if(!("speechSynthesis" in window)){
+
+        alert(
+            "Text-to-speech is not supported by this browser."
+        );
+
+        return;
+    }
+
+    stopReading();
+
+    const text=document.body.innerText;
+
+    const speech=
+    new SpeechSynthesisUtterance(text);
+
+    speech.rate=.85;
+
+    speech.pitch=1;
+
+    speech.volume=1;
+
+    speechSynthesis.speak(speech);
+}
+
+
+function stopReading(){
+
+    if("speechSynthesis" in window){
+        speechSynthesis.cancel();
+    }
+}
+
+
+function resetAccessibility(){
+
+    textSize="normal";
+
+    localStorage.removeItem(
+        "luxeTextSize"
+    );
+
+    document.body.classList.remove(
+        "high-contrast",
+        "large-buttons",
+        "reduce-motion",
+        "easy-reading"
+    );
+
+    document.getElementById(
+        "contrastToggle"
+    ).checked=false;
+
+    document.getElementById(
+        "buttonToggle"
+    ).checked=false;
+
+    document.getElementById(
+        "motionToggle"
+    ).checked=false;
+
+    document.getElementById(
+        "readingToggle"
+    ).checked=false;
+
+    localStorage.removeItem(
+        "luxeContrast"
+    );
+
+    localStorage.removeItem(
+        "luxeLargeButtons"
+    );
+
+    localStorage.removeItem(
+        "luxeReduceMotion"
+    );
+
+    localStorage.removeItem(
+        "luxeEasyReading"
+    );
+
+    applyTextSize();
+}
+
+
+function loadAccessibility(){
+
+    textSize=
+    localStorage.getItem(
+        "luxeTextSize"
+    )||"normal";
+
+    applyTextSize();
+
+    const contrast=
+    localStorage.getItem(
+        "luxeContrast"
+    )==="true";
+
+    const largeButtons=
+    localStorage.getItem(
+        "luxeLargeButtons"
+    )==="true";
+
+    const reduceMotion=
+    localStorage.getItem(
+        "luxeReduceMotion"
+    )==="true";
+
+    const easyReading=
+    localStorage.getItem(
+        "luxeEasyReading"
+    )==="true";
+
+    document.body.classList.toggle(
+        "high-contrast",
+        contrast
+    );
+
+    document.body.classList.toggle(
+        "large-buttons",
+        largeButtons
+    );
+
+    document.body.classList.toggle(
+        "reduce-motion",
+        reduceMotion
+    );
+
+    document.body.classList.toggle(
+        "easy-reading",
+        easyReading
+    );
+
+    document.getElementById(
+        "contrastToggle"
+    ).checked=contrast;
+
+    document.getElementById(
+        "buttonToggle"
+    ).checked=largeButtons;
+
+    document.getElementById(
+        "motionToggle"
+    ).checked=reduceMotion;
+
+    document.getElementById(
+        "readingToggle"
+    ).checked=easyReading;
+}
+
+
+/* ESC KEY */
+
+document.addEventListener(
+    "keydown",
+    function(event){
+
+        if(event.key==="Escape"){
+
+            closeSearch();
+            closeCart();
+            closeLogin();
+            closeCheckout();
+
+            document.getElementById(
+                "accessibilityPanel"
+            ).classList.remove("active");
+
+        }
+
+    }
+);
+
+
+/* START */
+
+displayProducts(products);
+
+updateCart();
+
+updateUserDisplay();
+
+loadAccessibility();
+
+</script>
+
+</body>
+</html>
